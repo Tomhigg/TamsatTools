@@ -5,7 +5,7 @@ Authors@R: person("Tom", "Higginbottom", email = "T.Higginbottom@mmu.ac.uk", rol
 Description: A set of tools to automate the retrieval  and processing  of data from the TAMSAT 
              project, providing rainfall estimates for Africa at 4km resolutions from 1983 onwards.
 Depends:
-    R (>= 3.3.2)
+    R (>= 3.3.1)
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
