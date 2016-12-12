@@ -12,7 +12,7 @@
 #
 
 
-no_rainy_days_window <- function(daily_rfe, years, start_doy, threshold, id, outlocation){
+no_rainy_days_window <- function(daily_rfe, years, start_doy, end_doy, threshold, id, outlocation){
   
   if(missing(threshold)==TRUE){threshold = 0}
   
@@ -24,8 +24,9 @@ no_rainy_days_window <- function(daily_rfe, years, start_doy, threshold, id, out
     start_date <- gsub(pattern = "-","_",start_date)
     start_grep <- paste0("rfe",start_date)
     
-    end_doy <- start_doy-2
-    end_date <- as.Date(end_doy, origin = paste0(i+1,"-01-01"))
+    if(end_doy < start_doy)
+    {end_date <- as.Date(end_doy, origin = paste0(i+1, "-01-01"))}    
+    
     end_date <- as.Date(end_date,format="%Y/%m/%d")
     end_date <- gsub(pattern = "-","_",end_date)
     end_grep <- paste0("rfe",end_date)
@@ -43,10 +44,9 @@ no_rainy_days_window <- function(daily_rfe, years, start_doy, threshold, id, out
     # count wet days 
     raster::calc(year_stack, function(x) sum(x > threshold),filename = flname) 
     removeTmpFiles(h = 0) 
-  }}
+  }
 
-
-
+}
 
 
 
