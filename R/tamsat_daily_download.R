@@ -15,7 +15,7 @@ tamsat_daily_download <- function(years,outlocation,unZip){
     filePath<-  paste0("http://www.tamsat.org.uk/public_data/", i, "/TAMSAT_rfe_daily",i, ".zip")
     destPath <- paste0(outlocation, basename(filePath))
     print("downloading year-", i)
-    curl::curl_download(url = filePath,destfile =destPath,mode="wb")
+    curl::curl_download(url = filePath,destfile =destPath, mode="wb")
   }
   
 if(unZip==TRUE){
