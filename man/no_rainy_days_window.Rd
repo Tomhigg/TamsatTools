@@ -4,11 +4,14 @@
 \alias{no_rainy_days_window}
 \title{Number of rainy days window}
 \usage{
-no_rainy_days_window(daily_rfe, years, start_doy, threshold, id, outlocation)
+no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
+  outlocation)
 
-no_rainy_days_window(daily_rfe, years, start_doy, threshold, id, outlocation)
+no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
+  outlocation)
 
-no_rainy_days_window(daily_rfe, years, start_doy, threshold, id, outlocation)
+no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
+  outlocation)
 }
 \arguments{
 \item{daily_rfe}{Folder containing the downloaded daily-rfe from tamsat_daily_download}
@@ -17,13 +20,13 @@ no_rainy_days_window(daily_rfe, years, start_doy, threshold, id, outlocation)
 
 \item{start_doy}{Day of Year (DDD-format) for the start of the period}
 
+\item{end_doy}{Day of Year (DDD-format) for the end of the period}
+
 \item{threshold}{threshold for classifying a rainy day, in mm/day, defaults to zero is missing}
 
 \item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
 
 \item{outlocation}{Folder (string) to save summary layers into}
-
-\item{end_doy}{Day of Year (DDD-format) for the end of the period}
 
 \item{daily_rfe}{Folder containing the downloaded daily-rfe from tamsat_daily_download}
 
