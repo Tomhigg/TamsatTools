@@ -4,16 +4,13 @@
 #' Note that the unZip utilities within R are particually slow
 #'
 #'
-#' @param type string of "e", "a" or "both", defaults to both
-#' @param period string of "d", "m", "s" or "all", defaults to all
+#' @param type string, data to be downloaded of "e", (estimates) "a" (annomalies) or "both", defaults to both
+#' @param period string, temporal resolution of data to download of "d" (daily), "m" (monthly), "s" (seasonal),or "all", defaults to all
 #' @param outlocation Folder (string) to save downloaded .zip files into
 #' @param unZip Should the downloaded zips be unzipped
 #
 
 tamsat_all_download <- function(type, period, outlocation, unZip){
-  #if missing type
-
-  #if missing period
 
   paths_positions <- 1:6
 
