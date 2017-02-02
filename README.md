@@ -12,7 +12,7 @@ The package can be in R directly from github using devtools
 
 ```R
 library(devtools)
-install_github('loicdtx/bfastSpatial')
+install_github('Tomhigg/TamsatTools')
 ```
 ## Functionality
 
