@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # TamsatTools
 Download and process TAMSAT rainfall estimates
 
@@ -13,15 +16,41 @@ The package can be in R directly from github using devtools
 ```R
 library(devtools)
 install_github('Tomhigg/TamsatTools')
+library(TamsatTools)
 ```
-## Functionality
+## Functions
+
+### Downloading Data
+
+There are two functions to download data.
+
+Daily estimates can be dowloaded for desired years as follows 
+
+```R
+tamsat_daily_download(years= 1984:1990, outlocation = "C:/Data/Rainfall/Tamsat/", unZip=FALSE){
+```
+
+Aggregated layers must be downloaded for the entire period. Options cover the type (rainfall estimates or annomalies), and the aggregation period (dekadal, monthly, seasonal) 
+
+```R
+tamsat_all_download(type= "e", period ="m", outlocation ="C:/Data/Rainfall/Tamsat/", unZip=FALSE)
+##Downloaded rainfall estiamte at monthly resolution.
+```
+
+###Manipulating Data
+#### Monthly Data
+Note: the following only applies to rainfall estimates not annomalies
+To make monthly summaries of the downloaded data 
+
+
+
+
+
+
 
 Current functionality includes:
 - Downloading daily rainfall estimates for selected years
 - Calculating statistical  summaries of daily rainfall for either a calendar  year or a user-defined period
 - Calculating the number of rainy day (rainfall greater than zero or specified threshold) for either a calendar  year or a user defined period
 
-Future functions will cover:
-- Dekadal/monthly  data manipulation
-- Calculation of trends
- 
+
