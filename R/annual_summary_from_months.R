@@ -1,6 +1,6 @@
 #' Annual; Sum Statistics
 #'
-#' Calculates sum annual rainfall from monthly estimate
+#' Calculates sum annual rainfall from monthly estimate, will crop output to extent of fill_with
 #'
 #' @param download_folder Folder containing the downloaded monthly estimate from tamsat_download_all()
 #' @param fill_with raster brick output from monthly_summary() to fill missing months

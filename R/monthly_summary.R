@@ -8,9 +8,10 @@
 #' @param stat statistic to calculate, must be compatible with raster::calc()
 #' @param period Years as interger(s) for which statistics will be calculated
 #' @param months months to calculate eg c(1:12), c(1,4,6,10:12)
+#' @param ex any object for which extent can be calculated
 
 
-monthly_summary <- function(download_folder, months, period, stat){
+monthly_summary <- function(download_folder, months, period, stat, ex){
 
   dir_list <- list.dirs(path = download_folder,full.names = T,recursive = F)
 
@@ -38,7 +39,7 @@ monthy_stats  <- stack(sapply(X = months, FUN = function(i){
   year_paths <- all_files[grep(pattern =monthCode,x =  all_files)]
 
   rasStack <- stack(sapply(year_paths, raster))
- rasStack <- crop(x = rasStack, y = limpopo)
+    if(is.null(ex)==TRUE){rasStack <- crop(x = rasStack, y = ex)}
  summary_statistics <- calc(x = rasStack,fun = stat)
 }))
 

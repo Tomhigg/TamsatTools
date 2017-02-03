@@ -1,6 +1,6 @@
 #' Make complete one-month time step raster time series
 #'
-#' Read and stack raster layers, fill missing months with predefined averages
+#' Read and stack raster layers, fill missing months with predefined averages, will crop to extent of fill_with
 #'
 #' @param download_folder Folder containing the downloaded monthly estimate from tamsat_download_all()
 #' @param fill_with raster brick output from monthly_summary() to fill missing months
@@ -23,6 +23,7 @@ for (i in years){
   year_stack <- raster::stack(sapply(year_list, FUN = raster::raster))
 
   year_stack <- crop(x = year_stack,y = fill_with)
+
 
   if (raster::nlayers(year_stack) < 12) {
     #make data frame of existing months based on month code from file string
