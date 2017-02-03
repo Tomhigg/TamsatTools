@@ -30,24 +30,26 @@ Daily estimates can be downloaded for desired years as follows
 #Download daily rainfall estimate for 1984 to 1990, don't unzip
 tamsat_daily_download(years= 1984:1990, 
                       outlocation = "C:/Data/Rainfall/Tamsat/", 
-                      unZip=FALSE)
+                      unZip = FALSE)
 ```
 
 Aggregated layers must be downloaded for the entire period. Options cover the type (rainfall estimates or anomalies), and the aggregation period (dekadal, monthly, seasonal) 
 
 ```R
-#Downloaded rainfall estiamte at monthly resolution.
-tamsat_all_download(type= "e", 
+#Downloaded rainfall estimates at monthly resolution.
+tamsat_all_download(type = "e", 
                     period ="m", 
-                    outlocation ="C:/Data/Rainfall/Tamsat/", 
-                    unZip=FALSE)
+                    outlocation = "C:/Data/Rainfall/Tamsat/", 
+                    unZip = FALSE)
 ```
 
 ###Manipulating Data
 #### Monthly Data
-Note: the following only applies to rainfall estimates not anomalies
 
-To make monthly summaries over a time period use the 'monthly_summary()' function 
+Note1: Currently only monthly data manipulation is supported, seasonal/dekadal will be added soon
+Note2: the following only applies to rainfall estimates not anomalies
+
+To make monthly summaries over a time period use the `monthly_summary()` function 
 
 ```R
 #Calculate mean monthly rainfall for every month, over the 1984-2010 period.
@@ -63,8 +65,33 @@ Making monthly summaries is a useful as it allows missing months to be filled ba
 #Calculate total annual rainfall, over the 1984-2010 period, replacing missing months with average values
 annual_sum_rainfall <- annual_summary_from_months(download_folder = "C:/Data/Rainfall/Tamsat/",
                                                   years = 1984:2010,  
-                                                  fill_with = "mean_month_rainfall")
+                                                  fill_with = mean_month_rainfall)
 ```
+
+
+To make a complete time series, again filling the missing months with averages, use the `make_monthly_stack()` function
+
+```R
+#Make monthly raster stack time series, for the 1984-2010 period, replacing missing months with average values
+rainfall_time_series <- monthly_stack(download_folder = "C:/Data/Rainfall/Tamsat/", 
+                                      years = 1984:2019, 
+                                      fill_with = mean_month_rainfall)
+```
+
+
+
+
+
+
+#### Daily Data
+
+
+
+
+
+
+
+
 
 
 
