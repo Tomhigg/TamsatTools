@@ -11,46 +11,49 @@
 #' @param ex any object for which extent can be calculated
 
 
-monthly_summary <- function(download_folder, months, period, stat, ex){
-
-  dir_list <- list.dirs(path = download_folder,full.names = T,recursive = F)
-
-  dirs_to_use <- dir_list[grep(pattern = paste(period,collapse="|") ,x = dir_list)]
-
-  all_files <- vector()
-
-  for (i in dirs_to_use ){
-    files_to_join <- list.files(path = i ,pattern = ".nc",full.names = T,recursive = T)
-    all_files <- c(all_files,files_to_join)
-  }
-
-
-  ### change this for an if orig statement
-  all_files_test <- all_files[-grep(pattern ="orig.nc",x =  all_files)]
-
-
-monthy_stats  <- stack(sapply(X = months, FUN = function(i){
-
-    if(i < 10){ i <- paste0(0,i)}
-
-  monthCode <- paste0("/",i,"/")
-
-
-  year_paths <- all_files[grep(pattern =monthCode,x =  all_files)]
-
-  rasStack <- stack(sapply(year_paths, raster))
-    if(is.null(ex)==TRUE){rasStack <- crop(x = rasStack, y = ex)}
- summary_statistics <- calc(x = rasStack,fun = stat)
-}))
-
-months_names <- c( "January", "February", "March", "April",
-             "May", "June", "July", "August", "September",
-             "October", "November", "December")
-
-months_labels <- months_names[c(months_names)]
-names(monthy_stats) <- months_labels
-
-
-
-  return(monthy_stats)
+monthly_summary <- function(download_folder, months, period, stat, ex) {
+    
+    dir_list <- list.dirs(path = download_folder, full.names = T, recursive = F)
+    
+    dirs_to_use <- dir_list[grep(pattern = paste(period, collapse = "|"), x = dir_list)]
+    
+    all_files <- vector()
+    
+    for (i in dirs_to_use) {
+        files_to_join <- list.files(path = i, pattern = ".nc", full.names = T, recursive = T)
+        all_files <- c(all_files, files_to_join)
+    }
+    
+    
+    ### change this for an if orig statement
+    all_files_test <- all_files[-grep(pattern = "orig.nc", x = all_files)]
+    
+    
+    monthy_stats <- stack(sapply(X = months, FUN = function(i) {
+        
+        if (i < 10) {
+            i <- paste0(0, i)
+        }
+        
+        monthCode <- paste0("/", i, "/")
+        
+        
+        year_paths <- all_files[grep(pattern = monthCode, x = all_files)]
+        
+        rasStack <- stack(sapply(year_paths, raster))
+        if (is.null(ex) == TRUE) {
+            rasStack <- crop(x = rasStack, y = ex)
+        }
+        summary_statistics <- calc(x = rasStack, fun = stat)
+    }))
+    
+    months_names <- c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 
+        "December")
+    
+    months_labels <- months_names[c(months_names)]
+    names(monthy_stats) <- months_labels
+    
+    
+    
+    return(monthy_stats)
 }

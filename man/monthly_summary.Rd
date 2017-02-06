@@ -4,7 +4,7 @@
 \alias{monthly_summary}
 \title{Monthy; Summary Statistics}
 \usage{
-monthly_summary(download_folder, months, period, stat)
+monthly_summary(download_folder, months, period, stat, ex)
 }
 \arguments{
 \item{download_folder}{Folder containing the downloaded monthly estimates from tamsat_all_download}
@@ -14,6 +14,8 @@ monthly_summary(download_folder, months, period, stat)
 \item{period}{Years as interger(s) for which statistics will be calculated}
 
 \item{stat}{statistic to calculate, must be compatible with raster::calc()}
+
+\item{ex}{any object for which extent can be calculated}
 }
 \description{
 Calculates monthly statistical summaries of rainfall for each month for a defined period

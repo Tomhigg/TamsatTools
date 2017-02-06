@@ -14,6 +14,6 @@ monthly_stack(download_folder, years, fill_with)
 \item{fill_with}{raster brick output from monthly_summary() to fill missing months}
 }
 \description{
-Read and stack raster layers, fill missing months with predefined averages
+Read and stack raster layers, fill missing months with predefined averages, will crop to extent of fill_with
 }
 

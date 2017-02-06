@@ -14,6 +14,6 @@ annual_summary_from_months(download_folder, years, fill_with)
 \item{fill_with}{raster brick output from monthly_summary() to fill missing months}
 }
 \description{
-Calculates sum annual rainfall from monthly estimate
+Calculates sum annual rainfall from monthly estimate, will crop output to extent of fill_with
 }
 

@@ -7,9 +7,9 @@
 tamsat_all_download(type, period, outlocation, unZip)
 }
 \arguments{
-\item{type}{string, data to be downloaded of "e", (estimates) "a" (annomalies) or "both", defaults to both}
+\item{type}{string, data to be downloaded of 'e', (estimates) 'a' (annomalies) or 'both'}
 
-\item{period}{string, temporal resolution of data to download of "d" (daily), "m" (monthly), "s" (seasonal),or "all", defaults to all}
+\item{period}{string, temporal resolution of data to download of 'd' (dekadal), 'm' (monthly), 's' (seasonal),or 'all'}
 
 \item{outlocation}{Folder (string) to save downloaded .zip files into}
 

@@ -15,7 +15,7 @@ annual_summary(daily_rfe, years, stat, id, outlocation)
 
 \item{stat}{statistic to calculate, must be compatible with raster::calc()}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 
@@ -25,7 +25,7 @@ annual_summary(daily_rfe, years, stat, id, outlocation)
 
 \item{years}{Years as interger(s) for which statistics will be calculated}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 }

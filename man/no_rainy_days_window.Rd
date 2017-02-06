@@ -24,7 +24,7 @@ no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
 
 \item{threshold}{threshold for classifying a rainy day, in mm/day, defaults to zero is missing}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 
@@ -34,7 +34,7 @@ no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
 
 \item{years}{Years as interger(s) for which statistics will be calculated}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 
@@ -48,7 +48,7 @@ no_rainy_days_window(daily_rfe, years, start_doy, end_doy, threshold, id,
 
 \item{years}{Years as interger(s) for which statistics will be calculated}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 }

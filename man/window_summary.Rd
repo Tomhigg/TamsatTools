@@ -17,7 +17,7 @@ window_summary(daily_rfe, years, start_doy, end_doy, stat, id, outlocation)
 
 \item{stat}{statistic to calculate, must be compatible with raster::calc()}
 
-\item{id}{Charecter sting to identify the outputs eg "long_integer/ jan_march etc"}
+\item{id}{Charecter sting to identify the outputs eg 'long_integer/ jan_march etc'}
 
 \item{outlocation}{Folder (string) to save summary layers into}
 }
