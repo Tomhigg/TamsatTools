@@ -13,9 +13,9 @@ These observations cover the Africa continent at 4 km resolution since 1983 with
 
 The package can be in R directly from github using devtools
 
-```R
-library(devtools)
-install_github('Tomhigg/TamsatTools')
+```{r,eval=TRUE}
+#library(devtools)
+#install_github('Tomhigg/TamsatTools')
 library(TamsatTools)
 ```
 ## Functions
@@ -26,7 +26,7 @@ There are two functions to download data. Functions have the option to automate 
 
 Daily estimates can be downloaded for desired years as follows 
 
-```R
+```{r,eval=FALSE}
 #Download daily rainfall estimate for 1984 to 1990, don't unzip
 tamsat_daily_download(years= 1984:1990, 
                       outlocation = "C:/Data/Rainfall/Tamsat/", 
@@ -35,7 +35,7 @@ tamsat_daily_download(years= 1984:1990,
 
 Aggregated layers must be downloaded for the entire period. Options cover the type (rainfall estimates or anomalies), and the aggregation period (dekadal, monthly, seasonal) 
 
-```R
+```{r,eval=FALSE}
 #Downloaded rainfall estimates at monthly resolution.
 tamsat_all_download(type = "e", 
                     period ="m", 
@@ -51,17 +51,34 @@ Note2: the following only applies to rainfall estimates not anomalies
 
 To make monthly summaries over a time period use the `monthly_summary()` function 
 
-```R
+
+
+```{r,eval=TRUE,cache=TRUE}
+rainfall_folder <- "G:/LimpopoWoodyChange/Rainfall/TAMSAT_rfe_monthly/"
+limpopo <- rgdal::readOGR(dsn ="G:/LimpopoWoodyChange" ,layer ="LimpopoBasin" )
+library(TamsatTools)
 #Calculate mean monthly rainfall for every month, over the 1984-2010 period.
-mean_month_rainfall <- monthly_summary(download_folder = "C:/Data/Rainfall/Tamsat/", 
+mean_month_rainfall <- monthly_summary(download_folder = rainfall_folder, 
                                      months = 1:12, 
-                                     period = "1984:2010", 
-                                     stat = "sum")
+                                     period = 1984:2010, 
+                                     ex = limpopo)
 ```
+To make nice figures the `rasterVis` package is very efficient 
+
+```{r,eval=TRUE,cache=TRUE}
+library(rasterVis)
+p <- levelplot(mean_month_rainfall,
+par.settings = RdBuTheme,main = "Mean monthly rainfall (mm) 1984-2015")
+p + layer(sp.lines(limpopo, lwd=1, col='darkgray'))
+
+
+```
+
+
 
 Making monthly summaries is a useful as it allows missing months to be filled based on the averages.
 
-```R
+```{r,eval=FALSE}
 #Calculate total annual rainfall, over the 1984-2010 period, replacing missing months with average values
 annual_sum_rainfall <- annual_summary_from_months(download_folder = "C:/Data/Rainfall/Tamsat/",
                                                   years = 1984:2010,  
@@ -71,7 +88,7 @@ annual_sum_rainfall <- annual_summary_from_months(download_folder = "C:/Data/Rai
 
 To make a complete time series, again filling the missing months with averages, use the `make_monthly_stack()` function
 
-```R
+```{r,eval=FALSE}
 #Make monthly raster stack time series, for the 1984-2010 period, replacing missing months with average values
 rainfall_time_series <- monthly_stack(download_folder = "C:/Data/Rainfall/Tamsat/", 
                                       years = 1984:2019, 
